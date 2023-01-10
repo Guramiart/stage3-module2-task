@@ -1,7 +1,7 @@
 package com.mjc.school.repository.impl;
 
 import com.mjc.school.repository.BaseRepository;
-import com.mjc.school.repository.annotation.OnDelete;
+import com.mjc.school.repository.annotation.OnCascadeDelete;
 import com.mjc.school.repository.source.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,7 +55,7 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     }
 
     @Override
-    @OnDelete
+    @OnCascadeDelete
     public boolean deleteById(Long id) {
         return readById(id)
                 .map(model -> dataSource.getAuthorModelList().remove(model))

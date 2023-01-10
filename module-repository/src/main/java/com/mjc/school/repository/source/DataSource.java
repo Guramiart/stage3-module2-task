@@ -6,6 +6,9 @@ import com.mjc.school.repository.impl.AuthorModel;
 import com.mjc.school.repository.impl.NewsBuilder;
 import com.mjc.school.repository.impl.NewsModel;
 import com.mjc.school.repository.utils.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -16,22 +19,15 @@ import java.util.Random;
 @Component
 public class DataSource {
 
-    private DataSource instance;
+    private static DataSource instance;
     private final Random random = new Random();
     private final List<NewsModel> newsModelList;
     private final List<AuthorModel> authorModelList;
 
-    private DataSource(List<AuthorModel> authorModelList) {
-        this.authorModelList = authorModelList;
+    @Autowired
+    private DataSource() {
+        this.authorModelList = initAuthorList();
         this.newsModelList = initNewsList();
-    }
-
-    public DataSource getInstance() {
-        if(instance == null) {
-            List<AuthorModel> authorModelList = initAuthorList();
-            instance = new DataSource(authorModelList);
-        }
-        return instance;
     }
 
     private List<AuthorModel> initAuthorList() {

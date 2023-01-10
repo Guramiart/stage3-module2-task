@@ -9,7 +9,7 @@ public class Constants {
     public static final int SECOND_LIMIT = 60;
     public static final int DAY_SHIFT = 90;
 
-    public static final String AUTHOR_FILE = "author";
+    public static final String AUTHOR_FILE = "authors";
     public static final String CONTENT_FILE = "content";
     public static final String NEWS_FILE = "news";
 

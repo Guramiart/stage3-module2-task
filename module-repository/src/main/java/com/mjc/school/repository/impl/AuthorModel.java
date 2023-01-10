@@ -20,12 +20,12 @@ public class AuthorModel implements BaseEntity<Long> {
 
     @Override
     public Long getId() {
-        return null;
+        return id;
     }
 
     @Override
     public void setId(Long id) {
-
+        this.id = id;
     }
 
     public String getName() {
