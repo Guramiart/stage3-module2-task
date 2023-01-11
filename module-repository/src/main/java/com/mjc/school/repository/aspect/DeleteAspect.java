@@ -1,8 +1,6 @@
 package com.mjc.school.repository.aspect;
 
-import com.mjc.school.repository.impl.AuthorModel;
 import com.mjc.school.repository.impl.NewsModel;
-import com.mjc.school.repository.impl.NewsRepository;
 import com.mjc.school.repository.source.DataSource;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,10 +9,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Aspect
 @Component
