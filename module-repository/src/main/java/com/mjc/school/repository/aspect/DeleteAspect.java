@@ -22,12 +22,9 @@ public class DeleteAspect {
     private DeleteAspect(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-    @Pointcut("@annotation(com.mjc.school.repository.annotation.OnCascadeDelete)")
-    public void deleteMethods() {}
 
-    @Before("deleteMethods()")
-    public void cascadeDelete(JoinPoint joinPoint) {
-        Long id = (Long)joinPoint.getArgs()[0];
+    @Before("@annotation(com.mjc.school.repository.annotation.OnCascadeDelete) && args(id)")
+    public void cascadeDelete(Long id) {
         List<NewsModel> newsModelList = dataSource.getNewsModelList();
         List<NewsModel> deletedList = newsModelList
                 .stream()
