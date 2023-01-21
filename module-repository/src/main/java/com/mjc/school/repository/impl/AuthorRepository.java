@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Repository
+@Repository("authorRepo")
 public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     private final DataSource dataSource;
@@ -42,6 +42,8 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
         } else {
             entity.setId(1L);
         }
+        entity.setLastUpdateDate(LocalDateTime.now());
+        entity.setCreateDate(LocalDateTime.now());
         modelList.add(entity);
         return entity;
     }

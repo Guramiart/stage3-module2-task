@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Repository
+@Repository("newsRepo")
 public class NewsRepository implements BaseRepository<NewsModel, Long> {
 
     private final DataSource dataSource;
@@ -41,6 +41,8 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
         } else {
             entity.setId(1L);
         }
+        entity.setCreateDate(LocalDateTime.now());
+        entity.setLastUpdateDate(LocalDateTime.now());
         modelList.add(entity);
         return entity;
     }

@@ -16,8 +16,6 @@ import java.util.Random;
 
 @Component
 public class DataSource {
-
-    private static DataSource instance;
     private final Random random = new Random();
     private final List<NewsModel> newsModelList;
     private final List<AuthorModel> authorModelList;
