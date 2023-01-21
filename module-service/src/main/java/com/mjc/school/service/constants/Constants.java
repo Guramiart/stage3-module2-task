@@ -4,7 +4,6 @@ public class Constants {
 
     private Constants() {}
 
-    public static final String NEWS_PARAM = "News";
     public static final String TITLE_PARAM = "title";
     public static final int MIN_TITLE_LENGTH = 5;
     public static final int MAX_TITLE_LENGTH = 15;

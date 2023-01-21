@@ -4,7 +4,6 @@ import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.annotation.OnCascadeDelete;
 import com.mjc.school.repository.source.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -43,6 +42,8 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
         } else {
             entity.setId(1L);
         }
+        entity.setLastUpdateDate(LocalDateTime.now());
+        entity.setCreateDate(LocalDateTime.now());
         modelList.add(entity);
         return entity;
     }

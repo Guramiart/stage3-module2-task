@@ -3,7 +3,6 @@ package com.mjc.school.repository.impl;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.source.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -42,6 +41,8 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
         } else {
             entity.setId(1L);
         }
+        entity.setCreateDate(LocalDateTime.now());
+        entity.setLastUpdateDate(LocalDateTime.now());
         modelList.add(entity);
         return entity;
     }
