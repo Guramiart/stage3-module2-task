@@ -3,7 +3,7 @@ package com.mjc.school.controller.annotations;
 import java.lang.annotation.*;
 
 @Documented
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.CLASS)
 public @interface CommandHandler {
 }
