@@ -7,6 +7,8 @@ import com.mjc.school.service.annotations.NotEmptyParam;
 import com.mjc.school.service.annotations.ValidParam;
 import com.mjc.school.service.dto.AuthorDtoRequest;
 import com.mjc.school.service.dto.AuthorDtoResponse;
+import com.mjc.school.service.exceptions.ErrorCode;
+import com.mjc.school.service.exceptions.ServiceException;
 import com.mjc.school.service.interfaces.AuthorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,11 +38,11 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     @NotEmptyParam
     public AuthorDtoResponse readById(Long id) {
         Optional<AuthorModel> authorModel = authorRepository.readById(id);
-        AuthorDtoResponse authorDtoResponse = new AuthorDtoResponse();
-        if(authorModel.isPresent() && authorRepository.existById(id)) {
-            authorDtoResponse = AuthorMapper.INSTANCE.authorToAuthorDto(authorModel.get());
+        if(authorModel.isEmpty()) {
+            throw new ServiceException(String.format(
+                    ErrorCode.NOT_EXIST.getErrorMessage(), "Author", id));
         }
-        return authorDtoResponse;
+        return AuthorMapper.INSTANCE.authorToAuthorDto(authorModel.get());
     }
 
     @Override
@@ -54,6 +56,10 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     @Override
     @ValidParam
     public AuthorDtoResponse update(AuthorDtoRequest updateRequest) {
+        if(!authorRepository.existById(updateRequest.getId())) {
+            throw new ServiceException(String.format(
+                    ErrorCode.NOT_EXIST.getErrorMessage(), "Author", updateRequest.getId()));
+        }
         AuthorModel authorModel = authorRepository
                 .update(AuthorMapper.INSTANCE.authorDtoToAuthor(updateRequest));
         return AuthorMapper.INSTANCE.authorToAuthorDto(authorModel);
@@ -62,6 +68,10 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     @Override
     @NotEmptyParam
     public boolean deleteById(Long id) {
+        if(!authorRepository.existById(id)) {
+            throw new ServiceException(String.format(
+                    ErrorCode.NOT_EXIST.getErrorMessage(), "Author", id));
+        }
         return authorRepository.deleteById(id);
     }
 }
