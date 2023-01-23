@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Scanner;
 
 @Component
-@CommandHandler
 public class CommandFactory {
 
     private final BaseController<NewsDtoRequest, NewsDtoResponse, Long> newsController;
