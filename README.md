@@ -38,36 +38,36 @@ and have the following requirements:
   in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Example: 2018-08-29T06:12:15.156. More discussion
   here: [stackoverflow: how to get iso 8601](https://stackoverflow.com/questions/3914404/how-to-get-current-moment-in-iso-8601-format-with-date-hour-and-minute)
   .
-- [x] News _authorId_ field should be mapped to the author datasource.
+- [x] News _authorId_ field should be mapped to the authorModel datasource.
 - [x] Author _name_ field should have length from 3 to 15.
 
 As well as in the **Architecture advanced** module data source should be generated automatically at runtime and saved in
 array datasource by reading files from the `resources` folder in the repository module (database emulation).
 
-For example: `author.txt`, `content.txt` which should contain the required data.
+For example: `authorModel.txt`, `content.txt` which should contain the required data.
 
 #### Operations
 
 The system should expose CRUD operations for News and Author from the __main__ module in the root project:
 
-- [x] Create News - fill only title, content, authorId and return created news.
-- [x] Create Author - fill only name and return created author.
-- [x] Get All News – return list of news.
+- [x] Create News - fill only title, content, authorId and return created newsModel.
+- [x] Create Author - fill only name and return created authorModel.
+- [x] Get All News – return list of newsModel.
 - [x] Get All Authors – return list of authors.
-- [x] Get News by id – return news by provided id.
-- [x] Get Author by id – return author by provided id.
-- [x] Update News – update only title, content, authorId by provided news id and return updated news.
-- [x] Update Author – update only name by provided author id and return updated author.
-- [x] Delete News – delete news by provided news id and return boolean value.
-- [x] Delete Author – delete author by provided author id and return boolean value. When deleting author you could
+- [x] Get News by id – return newsModel by provided id.
+- [x] Get Author by id – return authorModel by provided id.
+- [x] Update News – update only title, content, authorId by provided newsModel id and return updated newsModel.
+- [x] Update Author – update only name by provided authorModel id and return updated authorModel.
+- [x] Delete News – delete newsModel by provided newsModel id and return boolean value.
+- [x] Delete Author – delete authorModel by provided authorModel id and return boolean value. When deleting authorModel you could
   choose 2 options:
-    - set `authorId` field for corresponding news to `null`.
-    - remove corresponding news.
+    - set `authorId` field for corresponding newsModel to `null`.
+    - remove corresponding newsModel.
 
   > ##### Optional
   > Think of declarative way of choosing appropriate option instead of imperative way:
   >
-  > _**Imperative way:**_ in `delete author` method load all news related to that author and either set their `authorId`
+  > _**Imperative way:**_ in `delete authorModel` method load all newsModel related to that authorModel and either set their `authorId`
   > field to `null` or remove them.
   >
   > _**Declarative way:**_ use custom annotation (e.g. `@OnDelete`) with its handler (could be implemented
@@ -102,9 +102,9 @@ implementing all validations in business logic code or declaratively, e.g. via c
 2. App should be designed and written with respect to OOD and SOLID principles.
 3. Clear layered structure should be used with responsibilities of each application layer defined.
 4. All business logic should be written in the module-service: mapping `model` to `dto` and vice versa, validation, etc.
-5. All the news and author data should be generated automatically in the module-repository with the amount of 20 and
-   stored in array (database emulation) when the application is running. Reading default data for news and author
-   generation should be from files in `resources` package, e.g. `author.txt`, `content.txt` and `news.txt`.
+5. All the newsModel and authorModel data should be generated automatically in the module-repository with the amount of 20 and
+   stored in array (database emulation) when the application is running. Reading default data for newsModel and authorModel
+   generation should be from files in `resources` package, e.g. `authorModel.txt`, `content.txt` and `newsModel.txt`.
 6. Module-web and module-service should accept and return `dto` objects.
 7. Module-repository should accept and return `model` objects.
 8. Convenient error/exception should be implemented: all errors should be meaningful. Errors should
