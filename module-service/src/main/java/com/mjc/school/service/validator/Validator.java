@@ -5,6 +5,8 @@ import com.mjc.school.service.exceptions.ErrorCode;
 
 public class Validator {
 
+    private Validator() {}
+
     public static void validateNumber(Long number, String param) {
         if (number == null || number < 1) {
             throw new ArgumentNotValidException(String.format(
