@@ -21,31 +21,31 @@ public class AuthorController implements BaseController<AuthorDtoRequest, Author
     }
 
     @Override
-    @CommandHandler
+    @CommandHandler(value = "readAllAuthors")
     public List<AuthorDtoResponse> readAll() {
         return authorService.readAll();
     }
 
     @Override
-    @CommandHandler
+    @CommandHandler(value = "readAuthor")
     public AuthorDtoResponse readById(Long id) {
         return authorService.readById(id);
     }
 
     @Override
-    @CommandHandler
+    @CommandHandler(value = "createAuthor")
     public AuthorDtoResponse create(AuthorDtoRequest createRequest) {
         return authorService.create(createRequest);
     }
 
     @Override
-    @CommandHandler
+    @CommandHandler(value = "updateAuthor")
     public AuthorDtoResponse update(AuthorDtoRequest updateRequest) {
         return authorService.update(updateRequest);
     }
 
     @Override
-    @CommandHandler
+    @CommandHandler(value = "deleteAuthor")
     public boolean deleteById(Long id) {
         return authorService.deleteById(id);
     }
