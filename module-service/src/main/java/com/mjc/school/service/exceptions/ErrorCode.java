@@ -8,14 +8,14 @@ public enum ErrorCode {
     NULL_CONTENT("0301", "%s can't be null. %s is null"),
     WRONG_LENGTH("0302", "News %s can't be less than %d and more than %d symbols. News %s is: %s");
 
-    private final String errorCode;
+    private final String code;
     private final String message;
-    ErrorCode(String errorCode, String message) {
-        this.errorCode = errorCode;
+    ErrorCode(String code, String message) {
+        this.code = code;
         this.message = message;
     }
 
     public String getErrorMessage() {
-        return String.format("ERROR_CODE: %s ERROR_MESSAGE: %s", errorCode, message);
+        return String.format("ERROR_CODE: %s ERROR_MESSAGE: %s", code, message);
     }
 }

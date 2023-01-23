@@ -2,6 +2,7 @@ package com.mjc.school.repository.constants;
 
 public class Constants {
 
+    private Constants(){}
     public static final int SOURCE_DATA_LIMIT = 30;
     public static final int GENERATE_DATA_LIMIT = 20;
     public static final int HOUR_LIMIT = 24;

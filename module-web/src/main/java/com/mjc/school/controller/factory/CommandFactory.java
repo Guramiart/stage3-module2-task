@@ -2,6 +2,7 @@ package com.mjc.school.controller.factory;
 
 import com.mjc.school.controller.BaseController;
 import com.mjc.school.controller.Command;
+import com.mjc.school.controller.annotations.CommandHandler;
 import com.mjc.school.controller.impl.AuthorController;
 import com.mjc.school.controller.impl.NewsController;
 import com.mjc.school.controller.impl.command.*;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Scanner;
 
 @Component
+@CommandHandler
 public class CommandFactory {
 
     private final BaseController<NewsDtoRequest, NewsDtoResponse, Long> newsController;
