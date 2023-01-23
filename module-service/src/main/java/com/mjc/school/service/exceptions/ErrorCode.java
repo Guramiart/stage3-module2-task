@@ -2,7 +2,7 @@ package com.mjc.school.service.exceptions;
 
 public enum ErrorCode {
 
-    NOT_EXIST("0101", "%s with id: %s isn't exist"),
+    NOT_EXIST("0101", "%s with id: %d isn't exist"),
     NOT_NUMBER("0201", "%s id should be a number"),
     NON_POSITIVE("0202", "%s id can't be null or less than 1. %s id is: %d"),
     NULL_CONTENT("0301", "%s can't be null. %s is null"),
